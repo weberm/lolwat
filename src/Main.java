@@ -42,33 +42,36 @@ public class Main {
 				
 				
 			 }
-			 for (Iterator<Integer> i = data.iterator(); i.hasNext(); ){
-				 System.out.println(i.next());
-				 
-			 }
+			
 			 @SuppressWarnings("resource")
 			 BufferedReader bufRead2 = new BufferedReader(input2);
 			 key = bufRead2.readLine();
-			 System.out.println(key);
+			// System.out.println(key);
 			 bufRead1.close();
 			 bufRead2.close();
 			 
 			 BTree Tree = new BTree(data,key);
-			 System.out.println(Tree.search(Tree.getRoot(), 10000).value);
+			
+			 Tree.inorder(Tree.getRoot());
+			
+			 //System.out.println(Tree.search(Tree.getRoot(), 10000).value);
+			 System.out.println(BTree.items);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	
 		 SecretKeySpec keySpec = new SecretKeySpec(
 			        "qnscAdgRlkIhAUPY44oiexBKtQbGY0orf7OV1I50".getBytes(),
-			        "HmacSHA1");
+			        "HmacSHA256");
 
 			Mac mac = Mac.getInstance("HmacSHA256");
 			mac.init(keySpec);
 			byte[] result = mac.doFinal("foo".getBytes());
 
 			BASE64Encoder encoder = new BASE64Encoder();
-			System.out.println(encoder.encode(result));
+	//		System.out.println(encoder.encode(result));
+	
 		 
 	}
 
