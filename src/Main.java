@@ -1,14 +1,23 @@
 
 import java.io.*;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+
+import javax.crypto.Mac;
+import javax.crypto.spec.SecretKeySpec;
+
+import sun.misc.BASE64Encoder;
 public class Main {
 
 	/**
 	 * @param args
+	 * @throws NoSuchAlgorithmException 
+	 * @throws InvalidKeyException 
 	 */
-	public static void main(String[] args) throws FileNotFoundException {
+	public static void main(String[] args) throws FileNotFoundException, NoSuchAlgorithmException, InvalidKeyException {
 		// TODO Auto-generated method stub
 		// args[0] is the tree data
 		// args[1] is the key.txt
@@ -50,6 +59,16 @@ public class Main {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		 SecretKeySpec keySpec = new SecretKeySpec(
+			        "qnscAdgRlkIhAUPY44oiexBKtQbGY0orf7OV1I50".getBytes(),
+			        "HmacSHA1");
+
+			Mac mac = Mac.getInstance("HmacSHA256");
+			mac.init(keySpec);
+			byte[] result = mac.doFinal("foo".getBytes());
+
+			BASE64Encoder encoder = new BASE64Encoder();
+			System.out.println(encoder.encode(result));
 		 
 	}
 
