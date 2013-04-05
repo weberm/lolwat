@@ -4,7 +4,7 @@ import java.util.List;
  
 
 public class BTree {
-	public static  String items = new String();
+	private  String items = "";
 	private BNode theBTRootNode;
 	public BTree(List<Integer> data, String key){
 		theBTRootNode = null;
@@ -61,11 +61,13 @@ public class BTree {
 	        }
 	    }
 	  protected void inorder(BNode theRootNode) {
+		
 	        if (theRootNode != null) {
 	            inorder(theRootNode.leftBNode);
-	            items = items + (Integer.toString(theRootNode.value));
-	            //setItems(items);
-	           // System.out.println(items);
+	            items = items.concat(Integer.toString(theRootNode.value));
+	           // System.out.println(items.length());
+	            setItems(items);
+	            //System.out.println(items);
 	            inorder(theRootNode.rightBNode);
 	        }
 	    }

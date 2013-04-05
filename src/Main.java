@@ -53,9 +53,11 @@ public class Main {
 			 BTree Tree = new BTree(data,key);
 			
 			 Tree.inorder(Tree.getRoot());
-			
+			for(int i = 0; i < Tree.getitems().length() -1;i++)
+				System.out.print(Tree.getitems().charAt(i));
+			System.out.println();
 			 //System.out.println(Tree.search(Tree.getRoot(), 10000).value);
-			 System.out.println(BTree.items);
+			 //System.out.println(Tree.getRoot());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
